@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="signup-container p-4 rounded shadow" style="max-width: 400px;">
+            <h1 class="signup-heading text-center mb-4">Login to Email Composer</h1>
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email(class="form-control", placeholder="Enter your email") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.password.label(class="form-label") }}
+                    {{ form.password(class="form-control", placeholder="Enter your password") }}
+                </div>
+                <div class="form-check mb-3">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+            <div class="form-group mt-3 text-center">
+                <p class="signup-link">Forgot your password? <a href="/forgot-password" class="text-danger">Reset it here</a></p>
+            </div>
+            <p class="login-link text-center mt-3">Don't have an account? <a href="/sign-up">Sign up here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
