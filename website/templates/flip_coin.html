@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% set views = namespace() %}
+
+{% block title %}Flip a Coin Game{% endblock %}
+
+{% block content %}
+<div class="CoinFlip">
+    <h2>Get ready to flip...</h2>
+    <p>Make sure you enter who is taking which side, so there are no backsides.</p>
+    <form method="POST" action="{{ url_for('views.flip_result') }}">
+        <label for="heads">Who is Heads:</label>
+        <input type="text" name="heads" required>
+        <br>
+        <label for="tails">Who is Tails:</label>
+        <input type="text" name="tails" required>
+        <br>
+        <button type="submit" class="btn btn-primary">Flip Coin</button>
+    </form>
+    {% if result %}
+        <h3>{{ result }}</h3>
+        <button onclick="tryAgain()" class="btn btn-secondary">Try Again</button>
+        <script>
+            function tryAgain() {
+                window.location.href = '{{ url_for("views.flip_coin") }}';
+            }
+        </script>
+    {% endif %}
+</div>
+{% endblock %}
