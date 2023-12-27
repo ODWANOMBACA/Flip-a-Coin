@@ -24,4 +24,7 @@ def flip_result():
     # Add your coin flip logic here (randomly choose heads or tails)
     result = "Heads" if random.choice([True, False]) else "Tails"
 
-    return render_template('flip_coin.html', result=result, heads=heads, tails=tails, user=current_user)
+    winner = heads if result == "Heads" else tails
+    loser = tails if result == "Heads" else heads
+
+    return render_template('flip_coin.html', result=result, winner=winner, loser=loser, user=current_user)
