@@ -7,7 +7,7 @@
 {% block content %}
 <div class="CoinFlip">
     <h2>Get ready to flip...</h2>
-    <p>Make sure you enter who is taking which side, so there are no backsides.</p>
+    <p>Ensure that you indicate who is taking which side so that there are no surprises.</p>
     <form method="POST" action="{{ url_for('views.flip_result') }}">
         <label for="heads">Who is Heads:</label>
         <input type="text" name="heads" required>
@@ -18,13 +18,14 @@
         <button type="submit" class="btn btn-primary">Flip Coin</button>
     </form>
     {% if result %}
-        <h3>{{ result }}</h3>
+    <h3>{{ result }}</h3>
+    <p>{{ winner }} wins!!!</p>
         <button onclick="tryAgain()" class="btn btn-secondary">Try Again</button>
-        <script>
-            function tryAgain() {
-                window.location.href = '{{ url_for("views.flip_coin") }}';
+    <script>
+        function tryAgain() {
+            window.location.href = '{{ url_for("views.flip_coin") }}';
             }
-        </script>
-    {% endif %}
+     </script>
+     {% endif %}
 </div>
 {% endblock %}
