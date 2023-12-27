@@ -12,6 +12,9 @@ def create_app():
     app.config['SECRET_KEY'] = 'Flip-Coin'
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('FLIP_DATABASE_URL')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    # Initialize extensions
+    db.init_app(app)
     
     # Registering all blueprints
     from .views import views
